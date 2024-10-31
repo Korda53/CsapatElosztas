@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Teams</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Player Selection</h1>
+    <form method="POST">
+        <ul>
+            {% for player in players %}
+                <li>
+                    <input type="checkbox" name="players" value="{{ player.name }}">
+                    {{ player.name }} - Defence: {{ player.defence }}, Attack: {{ player.attack }}, Skill: {{ player.skill }}, Stamina: {{ player.stamina }}
+                </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Create Teams</button>
+    </form>
+
+    {% if teams %}
+        <h2>Teams</h2>
+        <h3>Team Black {{teams[2]}}</h3>
+        <ul>
+            {% for player in teams[0] %}
+                <li>{{ player.name }} - Defence: {{ player.defence }}, Attack: {{ player.attack }}, Skill: {{ player.skill }}, Stamina: {{ player.stamina }}</li>
+            {% endfor %}
+        </ul>
+        <h3>Team White {{teams[3]}}</h3>
+        <ul>
+            {% for player in teams[1] %}
+                <li>{{ player.name }} - Defence: {{ player.defence }}, Attack: {{ player.attack }}, Skill: {{ player.skill }}, Stamina: {{ player.stamina }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <h2>Add/Update Player</h2>
+    <form method="POST" action="{{ url_for('add_player') }}">
+        <input type="text" name="name" placeholder="Player Name" required>
+        <input type="number" name="defence" placeholder="Defence (0-10)" min="0" max="10" required>
+        <input type="number" name="attack" placeholder="Attack (0-10)" min="0" max="10" required>
+        <input type="number" name="skill" placeholder="Skill (0-10)" min="0" max="10" required>
+        <input type="number" name="stamina" placeholder="Stamina (0-10)" min="0" max="10" required>
+        <button type="submit">Add Player</button>
+    </form>
+
+    <h2>Delete Player</h2>
+    <form method="POST" action="{{ url_for('delete_player') }}">
+        <ul>
+            {% for player in players %}
+                <li>
+                    <input type="checkbox" name="delete_players" value="{{ player.name }}">
+                    {{ player.name }}
+                </li>
+            {% endfor %}
+        </ul>
+        <button type="submit">Delete Selected Players</button>
+    </form>
+</body>
+</html>
