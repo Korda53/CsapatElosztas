@@ -19,7 +19,7 @@
         <h2 class="black_team">Team Black - Value: {{teams[2]}}</h2>
         <ul>
             {% for player in teams[0] %}
-                <li>{{ player.name }} - Defence: {{ player.defence }}, Attack: {{ player.attack }}, Skill: {{ player.skill }}, Stamina: {{ player.stamina }}</li>
+                <li><h3 class="black_team">{{ player.name }}</h3>Defence: {{ player.defence }}, Attack: {{ player.attack }}, Skill: {{ player.skill }}, Stamina: {{ player.stamina }}</li>
             {% endfor %}
         </ul>
         </font>
@@ -28,7 +28,7 @@
         <h2>Team White - Value: {{teams[3]}}</h2>
         <ul>
             {% for player in teams[1] %}
-                <li>{{ player.name }} - Defence: {{ player.defence }}, Attack: {{ player.attack }}, Skill: {{ player.skill }}, Stamina: {{ player.stamina }}</li>
+                <li><h3 class="white_team">{{ player.name }}</h3>Defence: {{ player.defence }}, Attack: {{ player.attack }}, Skill: {{ player.skill }}, Stamina: {{ player.stamina }}</li>
             {% endfor %}
         </ul>
     </form>

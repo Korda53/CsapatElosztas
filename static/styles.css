@@ -14,6 +14,18 @@ h2.black_team {
     color:#d4d4d4
 }
 
+h3.white_team {
+    color: #333;
+    margin-bottom: 0px;
+    margin-top: 6px;
+}
+
+h3.black_team {
+    color:#d4d4d4;
+    margin-bottom: 0px;
+    margin-top: 6px;
+}
+
 form {
     background-color: #ffffff; /* Light background for the form */
     border-radius: 8px; /* Rounded corners */
