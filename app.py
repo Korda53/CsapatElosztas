@@ -45,7 +45,7 @@ def index():
         selected_players = request.form.getlist('players')
         selected_players_data = [p for p in players if p['name'] in selected_players]
         teams = divide_teams(selected_players_data)
-        return render_template('index.html', players=players, teams=teams)
+        return render_template('teams.html', players=players, teams=teams)
     return render_template('index.html', players=players)
 
 def divide_teams(selected_players):

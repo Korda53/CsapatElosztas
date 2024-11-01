@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teams</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function refreshPage() {
+            location.reload(); // This function refreshes the page
+        }
+    </script>
+</head>
+<body></body>
+    {% if teams %}
+    <h1>Teams</h1>
+    <form style="background-color:black">
+        <font color="#d4d4d4">
+        <h2 class="black_team">Team Black - Value: {{teams[2]}}</h2>
+        <ul>
+            {% for player in teams[0] %}
+                <li>{{ player.name }} - Defence: {{ player.defence }}, Attack: {{ player.attack }}, Skill: {{ player.skill }}, Stamina: {{ player.stamina }}</li>
+            {% endfor %}
+        </ul>
+        </font>
+    </form>
+    <form>
+        <h2>Team White - Value: {{teams[3]}}</h2>
+        <ul>
+            {% for player in teams[1] %}
+                <li>{{ player.name }} - Defence: {{ player.defence }}, Attack: {{ player.attack }}, Skill: {{ player.skill }}, Stamina: {{ player.stamina }}</li>
+            {% endfor %}
+        </ul>
+    </form>
+    <form onsubmit="event.preventDefault(); refreshPage();">
+        <button type="submit">Try again!</button>
+    </form>
+    <form action="{{ url_for('index') }}">    
+        <button type="submit">Back to player selection</button>
+    </form>
+    {% endif %}
+</body>
+</html>

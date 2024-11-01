@@ -10,6 +10,10 @@ h1, h2, h3 {
     color: #333;
 }
 
+h2.black_team {
+    color:#d4d4d4
+}
+
 form {
     background-color: #ffffff; /* Light background for the form */
     border-radius: 8px; /* Rounded corners */
