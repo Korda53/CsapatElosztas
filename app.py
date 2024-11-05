@@ -170,5 +170,11 @@ def load_stored_password_hash():
     # Extract the password hash
     return root.find('password').text
 
+@app.route('/logout')
+def logout():
+    # Clear the session to log out the user
+    session.pop('logged_in', None)
+    return redirect(url_for('index'))
+
 if __name__ == '__main__':
     app.run(debug=True)
