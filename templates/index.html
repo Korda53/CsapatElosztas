@@ -12,8 +12,8 @@
         <ul>
             {% for player in players %}
                 <li>
-                    <input type="checkbox" name="players" value="{{ player.name }}">
-                    {{ player.name }} - Defence: {{ player.defence }}, Attack: {{ player.attack }}, Skill: {{ player.skill }}, Stamina: {{ player.stamina }}
+                    <input type="checkbox" name="players" value="{{ player.name }}">{{ player.name }}
+                    <li class="hidden">Defence: {{ player.defence }}, Attack: {{ player.attack }}, Skill: {{ player.skill }}, Stamina: {{ player.stamina }}</li>
                 </li>
             {% endfor %}
         </ul>

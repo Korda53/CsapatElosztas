@@ -39,6 +39,10 @@ ul {
     padding: 0;
 }
 
+.hidden {
+    display:none;
+}
+
 input[type="text"],
 input[type="number"],
 button {
