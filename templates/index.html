@@ -7,6 +7,29 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+    <div id="loginForm">
+        <h1>Login</h1>
+        <form action="/login" method="post">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <div id="welcomeMessage" class="hidden">
+        <h2>Szia Ceru!</h2>
+    </div>
+    <script>
+        window.onload = function() {
+            {% if logged_in %}
+                // Remove 'hidden' class from elements when logged in
+                document.getElementById('loginForm').style.display = 'none';
+                const hiddenItems = document.querySelectorAll('.hidden');
+                hiddenItems.forEach(item => {
+                    item.classList.remove('hidden');
+                });
+            {% endif %}
+        }
+    </script>
     <h1>Player Selection</h1>
     <form method="POST">
         <ul>

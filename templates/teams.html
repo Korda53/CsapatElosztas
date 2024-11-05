@@ -11,7 +11,18 @@
         }
     </script>
 </head>
-<body></body>
+<body>
+    <script>
+        window.onload = function() {
+            {% if logged_in %}
+                // Remove 'hidden' class from elements when logged in
+                const hiddenItems = document.querySelectorAll('.hidden');
+                hiddenItems.forEach(item => {
+                    item.classList.remove('hidden');
+                });
+            {% endif %}
+        }
+    </script>
     {% if teams %}
     <h1>Teams</h1>
     <form style="background-color:black">

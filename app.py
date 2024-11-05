@@ -1,8 +1,13 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, render_template, request, redirect, url_for, jsonify, session
 import xml.etree.ElementTree as ET
 import random
+import hashlib
+from datetime import timedelta
+import os
 
 app = Flask(__name__)
+
+app.secret_key = os.urandom(24)
 
 # Load players from XML
 def load_players():
@@ -45,8 +50,14 @@ def index():
         selected_players = request.form.getlist('players')
         selected_players_data = [p for p in players if p['name'] in selected_players]
         teams = divide_teams(selected_players_data)
-        return render_template('teams.html', players=players, teams=teams)
-    return render_template('index.html', players=players)
+        if 'logged_in' in session:
+            return render_template('teams.html', players=players, teams=teams, logged_in=True)
+        else:
+            return render_template('teams.html', players=players, teams=teams, logged_in=False)
+    if 'logged_in' in session:
+        return render_template('index.html', players=players, logged_in=True)
+    else:
+        return render_template('index.html', players=players, logged_in=False)        
 
 def divide_teams(selected_players):
     difference = 100
@@ -127,6 +138,37 @@ def delete_player():
     players = [p for p in players if p['name'] not in selected_players]
     save_players(players)
     return redirect(url_for('index'))
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        # Get the password from the form
+        password = request.form['password']
+        
+        # Hash the entered password and compare it with the stored hash
+        entered_password_hash = hashlib.sha256(password.encode()).hexdigest()
+        
+        # Load the stored password hash from the XML file
+        stored_password_hash = load_stored_password_hash()
+
+        if entered_password_hash == stored_password_hash:
+            # Password matches, start session with 5-minute timeout
+            session.permanent = True
+            app.permanent_session_lifetime = timedelta(minutes=2)
+            session['logged_in'] = True
+            return redirect(url_for('index'))
+        else:
+            return 'Invalid credentials. Please try again.'
+
+    return render_template('index.html')
+
+def load_stored_password_hash():
+    # Parse the XML file
+    tree = ET.parse('password.xml')
+    root = tree.getroot()
+    
+    # Extract the password hash
+    return root.find('password').text
 
 if __name__ == '__main__':
     app.run(debug=True)
