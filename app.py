@@ -20,12 +20,14 @@ def load_players():
         attack = int(player.find('attack').text)
         skill = int(player.find('skill').text)
         stamina = int(player.find('stamina').text)
+        speed = int(player.find('speed').text)
         players.append({
             'name': name,
             'defence': defence,
             'attack': attack,
             'skill': skill,
-            'stamina': stamina
+            'stamina': stamina,
+            'speed' : speed
         })
     return players
 
@@ -39,6 +41,7 @@ def save_players(players):
         ET.SubElement(player_elem, "attack").text = str(player['attack'])
         ET.SubElement(player_elem, "skill").text = str(player['skill'])
         ET.SubElement(player_elem, "stamina").text = str(player['stamina'])
+        ET.SubElement(player_elem, "speed").text = str(player['speed'])
     
     tree = ET.ElementTree(root)
     tree.write('players.xml')
@@ -90,11 +93,11 @@ def divide_teams_iteration(selected_players):
     team_white = selected_players[split_index:]
 
     for player in team_black:
-            player['score'] = sum([player['defence'], player['attack'], player['skill'], player['stamina']])
+            player['score'] = sum([player['defence'], player['attack'], player['skill'], player['stamina'], player['speed']])
             team_black_score+=player['score']
   
     for player in team_white:
-            player['score'] = sum([player['defence'], player['attack'], player['skill'], player['stamina']])
+            player['score'] = sum([player['defence'], player['attack'], player['skill'], player['stamina'], player['speed']])
             team_white_score+=player['score']
 
     return team_black, team_white, team_black_score, team_white_score
@@ -110,6 +113,7 @@ def add_player():
     attack = int(request.form['attack'])
     skill = int(request.form['skill'])
     stamina = int(request.form['stamina'])
+    speed = int(request.form['speed'])
     
     players = load_players()
     
@@ -121,10 +125,11 @@ def add_player():
             player['attack'] = attack
             player['skill'] = skill
             player['stamina'] = stamina
+            player['speed'] = speed
             break
     else:
         # Add new player if not found
-        players.append({'name': name, 'defence': defence, 'attack': attack, 'skill': skill, 'stamina': stamina})
+        players.append({'name': name, 'defence': defence, 'attack': attack, 'skill': skill, 'stamina': stamina, 'speed': speed})
     
     # Save the updated list of players back to XML
     save_players(players)

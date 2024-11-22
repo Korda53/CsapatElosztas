@@ -39,7 +39,7 @@
             {% for player in players %}
                 <li>
                     <input type="checkbox" name="players" value="{{ player.name }}">{{ player.name }}
-                    <li class="hidden">Defence: {{ player.defence }}, Attack: {{ player.attack }}, Skill: {{ player.skill }}, Stamina: {{ player.stamina }}</li>
+                    <li class="hidden">Defence: {{ player.defence }}, Attack: {{ player.attack }}, Skill: {{ player.skill }}, Stamina: {{ player.stamina }}, Speed: {{ player.speed }}</li>
                 </li>
             {% endfor %}
         </ul>
@@ -51,13 +51,13 @@
         <h3>Team Black {{teams[2]}}</h3>
         <ul>
             {% for player in teams[0] %}
-                <li>{{ player.name }} - Defence: {{ player.defence }}, Attack: {{ player.attack }}, Skill: {{ player.skill }}, Stamina: {{ player.stamina }}</li>
+                <li>{{ player.name }} - Defence: {{ player.defence }}, Attack: {{ player.attack }}, Skill: {{ player.skill }}, Stamina: {{ player.stamina }}, Speed: {{ player.speed }}</li>
             {% endfor %}
         </ul>
         <h3>Team White {{teams[3]}}</h3>
         <ul>
             {% for player in teams[1] %}
-                <li>{{ player.name }} - Defence: {{ player.defence }}, Attack: {{ player.attack }}, Skill: {{ player.skill }}, Stamina: {{ player.stamina }}</li>
+                <li>{{ player.name }} - Defence: {{ player.defence }}, Attack: {{ player.attack }}, Skill: {{ player.skill }}, Stamina: {{ player.stamina }}, Speed: {{ player.speed }}</li>
             {% endfor %}
         </ul>
     {% endif %}
@@ -69,6 +69,7 @@
         <input type="number" name="attack" placeholder="Attack (0-10)" min="0" max="10" required>
         <input type="number" name="skill" placeholder="Skill (0-10)" min="0" max="10" required>
         <input type="number" name="stamina" placeholder="Stamina (0-10)" min="0" max="10" required>
+        <input type="number" name="speed" placeholder="Speed (0-10)" min="0" max="10" required>
         <button type="submit">Add Player</button>
     </form>
 
