@@ -49,11 +49,11 @@
 	</player>
 	<player>
 		<name>Herka</name>
-		<defence>8</defence>
-		<attack>8</attack>
-		<skill>9</skill>
-		<stamina>7</stamina>
-        <speed>7</speed>
+		<defence>7</defence>
+		<attack>6</attack>
+		<skill>8</skill>
+		<stamina>6</stamina>
+        <speed>6</speed>
 	</player>
 	<player>
 		<name>Barna</name>
@@ -142,6 +142,22 @@
 		<skill>9</skill>
 		<stamina>6</stamina>
         <speed>6</speed>
+	</player>
+	    <player>
+		<name>Petz</name>
+		<defence>8</defence>
+		<attack>7</attack>
+		<skill>7</skill>
+		<stamina>6</stamina>
+        <speed>7</speed>
+	</player>
+	    <player>
+		<name>Matyi</name>
+		<defence>8</defence>
+		<attack>6</attack>
+		<skill>6</skill>
+		<stamina>8</stamina>
+        <speed>8</speed>
 	</player>
     <player>
 		<name>Áron</name>
