@@ -33,8 +33,8 @@
 	</player>
 	<player>
 		<name>Varr&#243; B&#225;lint</name>
-		<defence>9</defence>
-		<attack>7</attack>
+		<defence>8</defence>
+		<attack>6</attack>
 		<skill>7</skill>
 		<stamina>9</stamina>
         <speed>8</speed>
@@ -130,9 +130,9 @@
 	<player>
 		<name>Zsolti</name>
 		<defence>8</defence>
-		<attack>7</attack>
+		<attack>6</attack>
 		<skill>8</skill>
-		<stamina>8</stamina>
+		<stamina>7</stamina>
         <speed>8</speed>
 	</player>
 	<player>
