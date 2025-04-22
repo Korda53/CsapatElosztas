@@ -59,7 +59,7 @@
 		<name>Barna</name>
 		<defence>6</defence>
 		<attack>8</attack>
-		<skill>7</skill>
+		<skill>8</skill>
 		<stamina>6</stamina>
         <speed>7</speed>
 	</player>
@@ -89,11 +89,11 @@
 	</player>
 	<player>
 		<name>Szabi</name>
-		<defence>8</defence>
+		<defence>9</defence>
 		<attack>5</attack>
 		<skill>7</skill>
 		<stamina>5</stamina>
-        <speed>5</speed>
+        <speed>6</speed>
 	</player>
 	<player>
 		<name>Torma</name>
