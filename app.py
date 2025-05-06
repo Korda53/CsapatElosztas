@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 app.secret_key = os.urandom(24)
 
-# Load players from XML
+# Load players from XML - git user test
 def load_players():
     tree = ET.parse('players.xml')
     root = tree.getroot()
